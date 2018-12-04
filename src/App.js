@@ -8,7 +8,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      gameResults: 'Test your skills',
+      gameResults: 'Test Your Skills',
       playing: true,
       deck_id: '',
       player: [],
@@ -29,7 +29,11 @@ class App extends Component {
   }
 
   componentDidUpdate = () => {
-    if (this.totalHand('player') > 21 && this.state.playing) {
+    if (!this.state.playing) {
+      return
+    }
+
+    if (this.totalHand('player') > 21) {
       this.setState({
         gameResults: 'Player Busted!',
         playing: false
@@ -38,6 +42,11 @@ class App extends Component {
   }
 
   dealCards = (numberOfCards, whichHand) => {
+    // Don't allow cards to be dealt in a game that is over
+    if (!this.state.playing) {
+      return
+    }
+
     // put the axios request to get this number of cards
     // and add to the players hand
     axios
@@ -106,10 +115,14 @@ class App extends Component {
     return total
   }
 
+  buttonClass = () => {
+    return this.state.playing ? '' : 'hidden'
+  }
+
   render() {
     return (
       <>
-        <h1>ReactJack</h1>
+        <h1>Blackjack</h1>
         <div className="center">
           <p className="game-results">{this.state.gameResults}</p>
         </div>
@@ -119,7 +132,7 @@ class App extends Component {
 
         <div className="play-area">
           <div className="left">
-            <button className="hit" onClick={this.hit}>
+            <button className={`hit ${this.buttonClass()}`} onClick={this.hit}>
               Hit
             </button>
             <p>Your Cards:</p>
@@ -130,7 +143,7 @@ class App extends Component {
           </div>
 
           <div className="right">
-            <button className="stay">Stay</button>
+            <button className={`stay ${this.buttonClass()}`}>Stay</button>
             <p>Dealer Cards:</p>
             <p className="dealer-total">Facedown</p>
             <div className="dealer-hand">
