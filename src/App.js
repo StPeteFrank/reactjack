@@ -8,9 +8,32 @@ class App extends Component {
     super(props)
 
     this.state = {
+      gameResults: 'Test your skills',
+      playing: true,
       deck_id: '',
       player: [],
       dealer: []
+    }
+  }
+
+  componentDidMount = () => {
+    axios
+      .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+      .then(response => {
+        const newState = {
+          deck_id: response.data.deck_id
+        }
+
+        this.setState(newState, this.whenNewDeckIsShuffled)
+      })
+  }
+
+  componentDidUpdate = () => {
+    if (this.totalHand('player') > 21 && this.state.playing) {
+      this.setState({
+        gameResults: 'Player Busted!',
+        playing: false
+      })
     }
   }
 
@@ -45,18 +68,6 @@ class App extends Component {
     this.dealCards(2, 'player')
 
     this.dealCards(2, 'dealer')
-  }
-
-  componentDidMount = () => {
-    axios
-      .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-      .then(response => {
-        const newState = {
-          deck_id: response.data.deck_id
-        }
-
-        this.setState(newState, this.whenNewDeckIsShuffled)
-      })
   }
 
   hit = event => {
@@ -100,7 +111,7 @@ class App extends Component {
       <>
         <h1>ReactJack</h1>
         <div className="center">
-          <p className="game-results">Deal!</p>
+          <p className="game-results">{this.state.gameResults}</p>
         </div>
         <div className="center">
           <button className="reset hidden">Play Again!</button>

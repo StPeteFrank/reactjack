@@ -8,9 +8,10 @@
 
 - Deal two cards to the dealer (not worry about hidden cards just yet) X
 
-- Totalling the player's hand
-- Totalling the dealer's hand
-- Player Hit
+- Totalling the player's hand X
+- Totalling the dealer's hand X
+- Player Hit X
+
 - Player busting
 - Dealer Hit
 - Win/lose
