@@ -116,7 +116,9 @@ class App extends Component {
   }
 
   buttonClass = () => {
-    return this.state.playing ? '' : 'hidden'
+    if (!this.state.playing) {
+      return 'hidden'
+    }
   }
 
   render() {
