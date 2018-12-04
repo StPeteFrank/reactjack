@@ -1,14 +1,212 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  margin: 0;
+  min-height: 100%;
+  font: 16px / 1 sans-serif;
+  background-color: rgb(80, 155, 104);
+}
+
+h1 {
+  font-family: 'Ultra', serif;
+  font-weight: normal;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 4.5rem;
+  text-align: center;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)),
+    url('https://picjumbo.com/wp-content/uploads/playing-cards_free_stock_photos_picjumbo_DSC07167-2210x1473.jpg');
+  border-bottom: 4px solid rgb(230, 242, 233);
+}
+
+.play-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.game-results {
+  font-family: 'Ultra', serif;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  margin: 2.5rem 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0.75rem;
+  padding-right: 0.6;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.75rem;
+  padding-left: 0.6;
+}
+
+.hit,
+.stay {
+  font-family: 'Ultra', serif;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.6rem;
+  width: 10rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 7px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+.hit:hover,
+.stay:hover {
+  color: rgba(0, 0, 0, 0.75);
+  background-color: rgb(249, 114, 114);
+  cursor: pointer;
+}
+
+p {
+  font-family: 'Ultra', serif;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+.player-total,
+.dealer-total {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+.player-hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-hand img {
+  width: 6rem;
+  margin: 0.6rem;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.dealer-hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dealer-hand img {
+  width: 6rem;
+  height: 139px;
+  margin: 0.6rem;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.reset {
+  font-family: 'Ultra', serif;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.6rem;
+  width: 15rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 7px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.reset:hover {
+  color: rgba(0, 0, 0, 0.75);
+  background-color: rgb(249, 114, 114);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 560px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .game-results {
+    font-size: 1.6rem;
+  }
+
+  .hit,
+  .stay {
+    width: 7rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  .left {
+    margin-left: 0.5rem;
+  }
+
+  .right {
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .dealer-hand img,
+  .player-hand img,
+  .cardback-one,
+  .cardback-two {
+    width: 128px;
+    height: 186px;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  h1 {
+    font-size: 5.5rem;
+  }
+
+  .game-results {
+    font-size: 2.5rem;
+  }
+
+  .play-area {
+    margin-top: 2rem;
+  }
 }
