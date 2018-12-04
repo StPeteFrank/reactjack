@@ -1,12 +1,29 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      deck_id: ''
+    }
+  }
+  componentDidMount = () => {
+    axios
+      .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+      .then(response => {
+        this.setState({
+          deck_id: response.data.deck_id
+        })
+      })
+  }
   render() {
     return (
       <>
         <h1>Blackjack</h1>
         <div className="center">
-          <p className="game-results">Test Your Skills!</p>
+          <p className="game-results">Deal me in!</p>
         </div>
         <div className="center">
           <button className="reset hidden">Play Again!</button>
