@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       gameResults: 'Test Your Skills',
       playing: true,
+      dealerCardsHidden: true,
       deck_id: '',
       player: [],
       dealer: []
@@ -84,8 +85,21 @@ class App extends Component {
   }
 
   stay = async event => {
+    this.setState({
+      dealerCardsHidden: false
+    })
+
     while (this.totalHand('dealer') < 17) {
       await this.dealCards(1, 'dealer')
+    }
+
+    if (this.totalHand('dealer') > 21) {
+      this.setState({
+        playing: false,
+        gameResults: 'Player Wins!'
+      })
+
+      return
     }
 
     if (this.totalHand('player') > this.totalHand('dealer')) {
@@ -93,6 +107,8 @@ class App extends Component {
         playing: false,
         gameResults: 'Player Wins!'
       })
+
+      return
     }
 
     if (this.totalHand('player') < this.totalHand('dealer')) {
@@ -100,6 +116,8 @@ class App extends Component {
         playing: false,
         gameResults: 'Dealer Wins!'
       })
+
+      return
     }
 
     if (this.totalHand('player') === this.totalHand('dealer')) {
@@ -107,6 +125,8 @@ class App extends Component {
         playing: false,
         gameResults: 'Dealer Wins!'
       })
+
+      return
     }
   }
 
@@ -148,6 +168,12 @@ class App extends Component {
     }
   }
 
+  renderDealerMessage = () => {
+    return this.state.dealerCardsHidden
+      ? 'Facedown'
+      : `Total: ${this.totalHand('dealer')}`
+  }
+
   render() {
     return (
       <>
@@ -156,7 +182,9 @@ class App extends Component {
           <p className="game-results">{this.state.gameResults}</p>
         </div>
         <div className="center">
-          <button className="reset hidden">Play Again!</button>
+          <button className={`reset ${this.state.playing ? 'hidden' : ''}`}>
+            Play Again!
+          </button>
         </div>
 
         <div className="play-area">
@@ -179,9 +207,12 @@ class App extends Component {
               Stay
             </button>
             <p>Dealer Cards:</p>
-            <p className="dealer-total">Facedown</p>
+            <p className="dealer-total">{this.renderDealerMessage()}</p>
             <div className="dealer-hand">
-              <Hand cards={this.state.dealer} />
+              <Hand
+                hidden={this.state.dealerCardsHidden}
+                cards={this.state.dealer}
+              />
             </div>
           </div>
         </div>
