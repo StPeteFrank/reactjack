@@ -4,20 +4,28 @@ import update from 'immutability-helper'
 import Hand from './Hand'
 
 class App extends Component {
+  initialState = {
+    gameResults: 'Test Your Skills',
+    playing: true,
+    dealerCardsHidden: true,
+    deck_id: '',
+    player: [],
+    dealer: []
+  }
+
   constructor(props) {
     super(props)
 
-    this.state = {
-      gameResults: 'Test Your Skills',
-      playing: true,
-      dealerCardsHidden: true,
-      deck_id: '',
-      player: [],
-      dealer: []
-    }
+    this.state = this.initialState
   }
 
   componentDidMount = () => {
+    this.startGame()
+  }
+
+  startGame = () => {
+    this.setState(this.initialState)
+
     axios
       .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
       .then(response => {
@@ -182,7 +190,10 @@ class App extends Component {
           <p className="game-results">{this.state.gameResults}</p>
         </div>
         <div className="center">
-          <button className={`reset ${this.state.playing ? 'hidden' : ''}`}>
+          <button
+            onClick={this.startGame}
+            className={`reset ${this.state.playing ? 'hidden' : ''}`}
+          >
             Play Again!
           </button>
         </div>
