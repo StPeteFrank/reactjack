@@ -80,7 +80,7 @@ h1 {
 .hit:hover,
 .stay:hover {
   color: rgba(0, 0, 0, 0.75);
-  background-color: rgb(249, 114, 114);
+  /* background-color: rgb(249, 114, 114); */
   cursor: pointer;
 }
 

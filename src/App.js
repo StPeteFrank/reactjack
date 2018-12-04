@@ -41,7 +41,7 @@ class App extends Component {
     }
   }
 
-  dealCards = (numberOfCards, whichHand) => {
+  dealCards = async (numberOfCards, whichHand) => {
     // Don't allow cards to be dealt in a game that is over
     if (!this.state.playing) {
       return
@@ -49,7 +49,7 @@ class App extends Component {
 
     // put the axios request to get this number of cards
     // and add to the players hand
-    axios
+    await axios
       .get(
         `https://deckofcardsapi.com/api/deck/${
           this.state.deck_id
@@ -81,6 +81,33 @@ class App extends Component {
 
   hit = event => {
     this.dealCards(1, 'player')
+  }
+
+  stay = async event => {
+    while (this.totalHand('dealer') < 17) {
+      await this.dealCards(1, 'dealer')
+    }
+
+    if (this.totalHand('player') > this.totalHand('dealer')) {
+      this.setState({
+        playing: false,
+        gameResults: 'Player Wins!'
+      })
+    }
+
+    if (this.totalHand('player') < this.totalHand('dealer')) {
+      this.setState({
+        playing: false,
+        gameResults: 'Dealer Wins!'
+      })
+    }
+
+    if (this.totalHand('player') === this.totalHand('dealer')) {
+      this.setState({
+        playing: false,
+        gameResults: 'Dealer Wins!'
+      })
+    }
   }
 
   totalHand = whichHand => {
@@ -145,7 +172,12 @@ class App extends Component {
           </div>
 
           <div className="right">
-            <button className={`stay ${this.buttonClass()}`}>Stay</button>
+            <button
+              onClick={this.stay}
+              className={`stay ${this.buttonClass()}`}
+            >
+              Stay
+            </button>
             <p>Dealer Cards:</p>
             <p className="dealer-total">Facedown</p>
             <div className="dealer-hand">
