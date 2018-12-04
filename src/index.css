@@ -7,6 +7,7 @@ body {
   min-height: 100%;
   font: 16px / 1 sans-serif;
   background-color: rgb(80, 155, 104);
+  background-image: linear-gradient(rgb(0, 0, 187), rgb(5, 235, 5));
 }
 
 h1 {
@@ -23,7 +24,7 @@ h1 {
   font-size: 4.5rem;
   text-align: center;
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)),
-    url('https://picjumbo.com/wp-content/uploads/playing-cards_free_stock_photos_picjumbo_DSC07167-2210x1473.jpg');
+    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThpHvXM2Yd0CxXk5KlZiMjyeF_JdKxIsxHTyhYuli5QIkuI8DROA');
   border-bottom: 4px solid rgb(230, 242, 233);
 }
 
