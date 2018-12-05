@@ -5,7 +5,7 @@ import Hand from './Hand'
 
 class App extends Component {
   initialState = {
-    gameResults: 'Test Your Skills',
+    gameResults: 'Ante Up!',
     playing: true,
     dealerCardsHidden: true,
     deck_id: '',
@@ -51,13 +51,10 @@ class App extends Component {
   }
 
   dealCards = async (numberOfCards, whichHand) => {
-    // Don't allow cards to be dealt in a game that is over
     if (!this.state.playing) {
       return
     }
 
-    // put the axios request to get this number of cards
-    // and add to the players hand
     await axios
       .get(
         `https://deckofcardsapi.com/api/deck/${
@@ -76,13 +73,6 @@ class App extends Component {
   }
 
   whenNewDeckIsShuffled = () => {
-    // this will happen after state is updated
-
-    // call the API for "Draw a Card"
-    // -- draw two cards
-    // -- make sure to supply the deck_id
-    // -- console log the result to be sure it
-    // -- works the way we want
     this.dealCards(2, 'player')
 
     this.dealCards(2, 'dealer')
@@ -154,21 +144,21 @@ class App extends Component {
     return total
   }
 
-  totalDealerHand = () => {
-    let total = 0
-    this.state.dealer.forEach(card => {
-      // Using object lookup
-      const VALUES = {
-        ACE: 11,
-        KING: 10,
-        QUEEN: 10,
-        JACK: 10
-      }
-      total = total + (VALUES[card.value] || parseInt(card.value))
-    })
+  // totalDealerHand = () => {
+  //   let total = 0
+  //   this.state.dealer.forEach(card => {
+  //     // Using object lookup
+  //     const VALUES = {
+  //       ACE: 11,
+  //       KING: 10,
+  //       QUEEN: 10,
+  //       JACK: 10
+  //     }
+  //     total = total + (VALUES[card.value] || parseInt(card.value))
+  //   })
 
-    return total
-  }
+  //   return total
+  // }
 
   buttonClass = () => {
     if (!this.state.playing) {
@@ -185,7 +175,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Blackjack</h1>
+        <h1>ReactJack</h1>
         <div className="center">
           <p className="game-results">{this.state.gameResults}</p>
         </div>

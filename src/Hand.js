@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cardBack from './card-back.png'
+import cardBack from './black-card.png'
 
 class Hand extends Component {
   render() {
