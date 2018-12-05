@@ -184,17 +184,17 @@ class App extends Component {
             onClick={this.startGame}
             className={`reset ${this.state.playing ? 'hidden' : ''}`}
           >
-            Play Again!
+            Deal Me In!
           </button>
         </div>
 
         <div className="play-area">
           <div className="left">
             <button className={`hit ${this.buttonClass()}`} onClick={this.hit}>
-              Hit
+              Hit Me
             </button>
-            <p>Your Cards:</p>
-            <p className="player-total">Total {this.totalHand('player')} </p>
+            <p>Player</p>
+            <p className="player-total"> {this.totalHand('player')} </p>
             <div className="player-hand">
               <Hand cards={this.state.player} />
             </div>
@@ -207,7 +207,7 @@ class App extends Component {
             >
               Stay
             </button>
-            <p>Dealer Cards:</p>
+            <p>Dealer</p>
             <p className="dealer-total">{this.renderDealerMessage()}</p>
             <div className="dealer-hand">
               <Hand
