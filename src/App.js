@@ -131,7 +131,6 @@ class App extends Component {
   totalHand = whichHand => {
     let total = 0
     this.state[whichHand].forEach(card => {
-      // Using object lookup
       const VALUES = {
         ACE: 11,
         KING: 10,

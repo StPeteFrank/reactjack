@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100%;
   font: 16px / 1 sans-serif;
-  background-color: rgb(80, 155, 104);
+  background-color: rgb(28, 5, 235);
   background-image: linear-gradient(red, rgb(28, 5, 235));
   background-repeat: no-repeat;
 }
