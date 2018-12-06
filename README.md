@@ -2,9 +2,11 @@
 
 https://StPeteFrank-ReactJack.surge.sh
 
+- Description
+
 For this project I was to create a card game app of the casino favorite Blackjack. The app needed to be fully functional in coherence with standard game rules and also have an appealing style. In order to complete the project I needed to utilize HTML, CSS and several other technologies.
 
--JavaScript. A scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved.
+- JavaScript. A scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved.
 
 https://www.javascript.com/
 
