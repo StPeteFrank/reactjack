@@ -1,5 +1,7 @@
 # React Blackjack
 
+https://StPeteFrank-ReactJack.surge.sh
+
 - Use deckofcardsapi.com for our cards
 
 - Get a new deck of cards (shuffled) from the api X
@@ -12,7 +14,8 @@
 - Totalling the dealer's hand X
 - Player Hit X
 
-- Player busting
-- Dealer Hit
-- Win/lose
+- Player busting X
+
+- Dealer Hit X
+- Win/lose X
 - Play again
