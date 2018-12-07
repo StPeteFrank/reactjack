@@ -1,6 +1,10 @@
 # React Blackjack
 
-- Description
+<p align="center">
+<img src="src/ReactJack.gif">
+</p>
+
+## Description
 
 For this project I was to create a card game app of the casino favorite Blackjack. The app needed to be fully functional in coherence with standard game rules and also have an appealing style. In order to complete the project I needed to utilize HTML, CSS and several other technologies.
 
