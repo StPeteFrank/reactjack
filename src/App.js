@@ -143,22 +143,6 @@ class App extends Component {
     return total
   }
 
-  // totalDealerHand = () => {
-  //   let total = 0
-  //   this.state.dealer.forEach(card => {
-  //     // Using object lookup
-  //     const VALUES = {
-  //       ACE: 11,
-  //       KING: 10,
-  //       QUEEN: 10,
-  //       JACK: 10
-  //     }
-  //     total = total + (VALUES[card.value] || parseInt(card.value))
-  //   })
-
-  //   return total
-  // }
-
   buttonClass = () => {
     if (!this.state.playing) {
       return 'hidden'
@@ -220,5 +204,4 @@ class App extends Component {
     )
   }
 }
-
 export default App
