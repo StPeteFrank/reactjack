@@ -12,36 +12,28 @@ class App extends Component {
     player: [],
     dealer: []
   }
-
   constructor(props) {
     super(props)
-
     this.state = this.initialState
   }
-
   componentDidMount = () => {
     this.startGame()
   }
-
   startGame = () => {
     this.setState(this.initialState)
-
     axios
       .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
       .then(response => {
         const newState = {
           deck_id: response.data.deck_id
         }
-
         this.setState(newState, this.whenNewDeckIsShuffled)
       })
   }
-
   componentDidUpdate = () => {
     if (!this.state.playing) {
       return
     }
-
     if (this.totalHand('player') > 21) {
       this.setState({
         gameResults: 'Player Busted!',
@@ -49,12 +41,10 @@ class App extends Component {
       })
     }
   }
-
   dealCards = async (numberOfCards, whichHand) => {
     if (!this.state.playing) {
       return
     }
-
     await axios
       .get(
         `https://deckofcardsapi.com/api/deck/${
